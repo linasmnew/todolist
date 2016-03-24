@@ -1,0 +1,25 @@
+body{
+  background: orange;
+}
+a{
+  text-decoration: none;
+}
+#wrapper{
+  margin: auto;
+  margin: 10px;
+}
+
+/******** =HEADER **********/
+header{
+  background: #E8E8E8;
+}
+#logo {
+  display: inline-block;
+}
+header ul{
+  display: inline-block;
+  float: right;
+}
+header li{
+  display: inline-block;
+}
