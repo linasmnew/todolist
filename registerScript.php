@@ -39,10 +39,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
           $_SESSION['status'] = 'Email is already in use';
           header('location: register.php');
       }else{
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
         $register = $conn->prepare("INSERT INTO user(username,email,password) VALUES(?,?,?)");
         $register->bindParam(1,$username, PDO::PARAM_STR);
         $register->bindParam(2,$email, PDO::PARAM_STR);
-        $register->bindParam(3,$password, PDO::PARAM_STR);
+        $register->bindParam(3,$hashed_password, PDO::PARAM_STR);
         $register->execute();
         $register->closeCursor();
 
