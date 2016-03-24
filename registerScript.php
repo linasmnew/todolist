@@ -7,7 +7,20 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $check_username = $conn->query("SELECT username FROM user WHERE username = '$username'");
+  //remove all illegal characters from input
+  $username = filter_var($username, FILTER_SANITIZE_STRING);
+  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+  $password = filter_var($password, FILTER_SANITIZE_STRING);
+
+  //check if input is valid
+  if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
+    $_SESSION['status'] = 'Email is not valid';
+    header('location: register.php');
+    return;
+  }
+
+  $check_username = $conn->prepare("SELECT username FROM user WHERE username = ?");
+  $check_username->bindParam(1,$username, PDO::PARAM_STR);
   $check_username->fetch();
   $check_username->execute();
   $check_username->closeCursor();
@@ -16,7 +29,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       $_SESSION['status'] = 'Username is already in use';
       header('location: register.php');
   }else{
-      $check_email = $conn->query("SELECT email FROM user WHERE email = '$email'");
+      $check_email = $conn->prepare("SELECT email FROM user WHERE email = ?");
+      $check_email->bindParam(1,$email, PDO::PARAM_STR);
       $check_email->fetch();
       $check_email->execute();
       $check_email->closeCursor();
