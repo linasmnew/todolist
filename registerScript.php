@@ -67,8 +67,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     header('location: register.php');
   }
 
-}
+}else{
   $_SESSION['status'] = 'Only numbers and letters allowed';
   header('location: register.php');
+}
 }
 ?>
