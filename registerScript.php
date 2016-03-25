@@ -7,13 +7,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  // $username = htmlspecialchars($username, ENT_QUOTES);
+  if(!empty($username) && !empty($email) && !empty($password)){
 
-  if(isset($username) && isset($email) && isset($password)){
-
-    if(!filter_var($username, FILTER_SANITIZE_STRING) === false){
+    if(strlen($username) > 4 && !filter_var($username, FILTER_SANITIZE_STRING) === false){
       if(!filter_var($email, FILTER_SANITIZE_EMAIL) === false){
-        if(!filter_var($password, FILTER_SANITIZE_STRING) === false){
+        if(strlen($password) > 4 && !filter_var($password, FILTER_SANITIZE_STRING) === false){
           if(!filter_var($email, FILTER_VALIDATE_EMAIL) === false){
 
             $check_username = $conn->prepare("SELECT username FROM user WHERE username = ?");
@@ -55,7 +53,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
           header('location: register.php');
         }
       }else{
-        $_SESSION['status'] = 'Invalid username';
+        $_SESSION['status'] = 'Invalid password, make sure it does not contain symbols and is at least 5 characters';
         header('location: register.php');
       }
     }else{
@@ -63,12 +61,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       header('location: register.php');
     }
   }else{
-    $_SESSION['status'] = 'Invalid password';
+    $_SESSION['status'] = 'Invalid username, make sure it does not contain symbols and is at least 5 characters';
     header('location: register.php');
   }
 
 }else{
-  $_SESSION['status'] = 'Only numbers and letters allowed';
+  $_SESSION['status'] = 'Please fill in all fields';
   header('location: register.php');
 }
 }
