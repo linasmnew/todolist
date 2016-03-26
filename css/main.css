@@ -1,25 +1,186 @@
-body{
-  background: orange;
+html,body{
+  height: 100%;
+
 }
-a{
+body  {
+  background: #E8E8E8;
+}
+
+a {
+  color:#444;
   text-decoration: none;
 }
-#wrapper{
+
+h1,h2 {
+  color:#444;
+}
+h2{
+  font-size: 1.3em;
+}
+input {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+#wrapper {
+  min-height: 100%;
   margin: auto;
-  margin: 10px;
+  margin: 5px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+footer{
+  min-height: 50px;
+  text-align: center;
+  background: white;
+  margin-left:5px;
+  margin-right:5px;
 }
 
 /******** =HEADER **********/
-header{
-  background: #E8E8E8;
+
+#logo{
+  display: none;
 }
-#logo {
-  display: inline-block;
-}
-header ul{
+header ul {
   display: inline-block;
   float: right;
 }
-header li{
+header li {
   display: inline-block;
+}
+
+#search_form input{
+  display: inline-block;;
+  outline:none;
+  border-style: none;
+  padding:10px;
+  float: left;
+  width: 80%;
+}
+#search_form input[type="submit"] {
+  background: #aaa;
+  color:white;
+  padding:10px;
+  width: 20%;
+}
+#search_form input[type="submit"]:hover {
+  background: #ccc;
+}
+header:after{
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+/******* =Add task *******/
+.add_task_title{
+  display: inline-block;
+  border-bottom: 5px solid #ccc;
+  padding-top:10px;
+}
+#add_task_form input{
+  outline:none;
+  width: 100%;
+  border-style: none;
+  padding:10px;
+  background: #E8E8E8;
+  border-bottom: 1px solid #ccc;
+}
+#add_task_form select{
+  color: #9e9e9e;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -webkit-appearance: none;
+  appearance:none;
+  border-style:none;
+  outline:none;
+  background: url(../img/arrow.png) no-repeat right #E8E8E8;
+  padding:10px;
+  width: 100%;
+}
+#add_task_form input[type="submit"] {
+  border-style: none;
+  background: #06e589;
+  color:white;
+  padding:5px;
+  margin-top:10px;
+}
+
+
+/******** =Todo categories **********/
+.todo_categories {
+  padding-top: 20px;
+}
+.categories_title{
+  display: inline-block;
+  border-bottom: 5px solid #ccc;
+}
+.todo_categories ul{
+  padding-top: 10px;
+}
+.todo_categories li{
+  float: left;
+  display: inline-block;
+  width: 31.3333%;
+  border-bottom: 5px solid #5A71FF;
+  text-align: center;
+  min-height: 70px;
+  margin-bottom:10px;
+}
+/* every 3rd starting from 2 */
+.todo_categories li:nth-child(3n+2){
+  margin-left:3%;
+  border-bottom: 5px solid #E852A3;
+}
+/* every 3rd starting from beginning */
+.todo_categories li:nth-child(3n){
+  float: right;
+  right: 0;
+  border-bottom: 5px solid #FFB64E;
+}
+
+.todo_categories li a {
+  display: inline-block;
+  background: #ccc;
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.last_category{
+    color:#f5f5f5;
+}
+.todo_categories:after{
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+
+
+@media (min-width:768px) and (max-width:1500px) {
+  header {
+    background: #44E87E;
+    width: 100%;
+    padding-top:10px;
+  }
+  #logo {
+    display: inline-block;
+    padding-bottom: 10px;
+  }
+  #logo a{
+    color: #fff;
+  }
+  /*header:after{
+    content: " ";
+    display: table;
+    clear: both;
+  }
+  #search{
+    display: inline-block;
+    float: right;
+  }*/
+
+
 }
