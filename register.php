@@ -1,9 +1,11 @@
-<?php require('header.php');
+<?php
 session_start();
 
 if(isset($_SESSION['user_id'])){
-    header('location: index.php');
+  header('location: user/index.php');
 }
+
+require('header.php');
 
 ?>
 
@@ -13,8 +15,8 @@ if(isset($_SESSION['user_id'])){
   <form action="registerScript.php" method="POST">
     <input type="text" name="username" placeholder="username">
     <input type="text" name="email" placeholder="email">
-    <input type="text" name="password" placeholder="password">
-    <input type="submit" value="register">
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" value="register" name="register">
   </form>
 
   <?php if(isset($_SESSION['status'])) : ?>
