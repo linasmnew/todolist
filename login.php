@@ -10,9 +10,9 @@ require('header.php');
 ?>
 
 <section>
-  <h1>Register</h1>
+  <h1 class="login_register_titles">Login</h1>
 
-  <form action="loginScript.php" method="POST">
+  <form id="login_register_forms" action="loginScript.php" method="POST">
     <input type="text" name="username" placeholder="username">
     <input type="password" name="password" placeholder="password">
     <input type="submit" value="login" name="login">

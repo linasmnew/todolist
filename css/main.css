@@ -11,7 +11,7 @@ a {
   text-decoration: none;
 }
 
-h1,h2 {
+h1,h2,th,td {
   color:#444;
 }
 h2{
@@ -35,21 +35,59 @@ footer{
   background: white;
   margin-left:5px;
   margin-right:5px;
+  padding-top:10px;
 }
 
 /******** =HEADER **********/
 
-#logo{
-  display: none;
+header {
+  background: rgba(3,3,3,0.5);
+  width: 100%;
+  padding-top:10px;
+  height: 45px;
+}
+#logo {
+  padding-left: 5px;
+  display: inline-block;
+  padding-bottom: 10px;
+  padding-top:10px;
+}
+#logo a{
+  color: #fff;
 }
 header ul {
   display: inline-block;
   float: right;
+  padding-right: 5px;
+  padding-top:9px;
 }
 header li {
   display: inline-block;
+  padding-left: 5px;
+}
+header ul li a{
+  color: #777;
+  padding: 10px;
+  background: #FFFFFE;
+  border-radius: 5px;
 }
 
+/****** =Login Page ********/
+#login_register_forms input{
+  display: block;
+  width: 100%;
+  outline:none;
+  border-style: none;
+  padding:10px;
+  margin-bottom: 10px;
+}
+#login_register_forms input[type="submit"]{
+  background: #FF6765;
+  color: #fff;
+}
+
+
+/****** =User area search form ********/
 #search_form input{
   display: inline-block;;
   outline:none;
@@ -59,13 +97,13 @@ header li {
   width: 80%;
 }
 #search_form input[type="submit"] {
-  background: #aaa;
-  color:white;
+  background: #FF6765;
+  color:#fff;
   padding:10px;
   width: 20%;
 }
 #search_form input[type="submit"]:hover {
-  background: #ccc;
+  background: #FF6765;
 }
 header:after{
   content: " ";
@@ -77,7 +115,6 @@ header:after{
 .add_task_title{
   display: inline-block;
   border-bottom: 5px solid #ccc;
-  padding-top:10px;
 }
 #add_task_form input{
   outline:none;
@@ -101,7 +138,7 @@ header:after{
 }
 #add_task_form input[type="submit"] {
   border-style: none;
-  background: #06e589;
+  background: #FF6765;
   color:white;
   padding:5px;
   margin-top:10px;
@@ -139,7 +176,6 @@ header:after{
   right: 0;
   border-bottom: 5px solid #FFB64E;
 }
-
 .todo_categories li a {
   display: inline-block;
   background: #ccc;
@@ -147,7 +183,6 @@ header:after{
   padding-top: 25px;
   padding-bottom: 25px;
 }
-
 .last_category{
     color:#f5f5f5;
 }
@@ -158,29 +193,160 @@ header:after{
 }
 
 
+/****** =Tasks table ******/
+.tasks_table {
+  width: 100%;
+}
+.tasks_table td{
+  vertical-align: top;
+  padding: 10px;
+}
+.tasks_table th{
+  text-align: left;
+  padding: 10px;
+}
+.title{
+  width: 55%;
+}
+.date_due{
+  width: 20%;
+}
+.time_due{
+  width: 20%;
+  text-align: center;
+}
+.select{
+  width: 5%;
+  text-align: center;
+}
+
+
+/***** =ADD CATEGORY *****/
+.add_category_title {
+  display: inline-block;
+  border-bottom: 5px solid #ccc;
+}
+#add_category_form input{
+  outline:none;
+  width: 100%;
+  border-style: none;
+  padding:10px;
+  background: #E8E8E8;
+  border-bottom: 1px solid #ccc;
+}
+#add_category_form select{
+  color: #9e9e9e;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -webkit-appearance: none;
+  appearance:none;
+  border-style:none;
+  outline:none;
+  background: url(../img/arrow.png) no-repeat right #E8E8E8;
+  padding:10px;
+  width: 100%;
+}
+#add_category_form input[type="submit"] {
+  border-style: none;
+  background: #FF6765;
+  color:#fff;
+  padding:5px;
+  margin-top:10px;
+}
+
+.todo_categories .delete_category_link{
+  position: relative;
+  margin-top:-68px;
+  width: 10%;
+  float: right;
+  background:#E85D5C;
+  cursor: pointer;
+  color: #fff;
+}
+
+.delete_category_link:hover{
+  background:#FF6765
+}
+
+
+/**** =Task removing and marking ****/
+.task_actions {
+  margin-top: 20px;
+  float: right;
+  margin-bottom: 20px;
+}
+.task_actions li{
+  display: inline-block;
+  padding-left:5px;
+}
+.task_actions li a{
+  background: #fff;
+  border-bottom: 3px solid rgba(255, 0, 0, 0.5);
+}
+#complete_task_link{
+  color: #777;
+  text-decoration: none;
+  padding: 10px;
+}
+#remove_task_link{
+  color: #777;
+  text-decoration: none;
+  padding: 10px;
+}
+#notice{
+  display: none;
+  background: #FF6765;
+  color: #fff;
+  padding:10px;
+}
+
+
 
 @media (min-width:768px) and (max-width:1500px) {
-  header {
-    background: #44E87E;
-    width: 100%;
-    padding-top:10px;
+  #wrapper {
+    margin: auto;
+    margin: 5px;
   }
-  #logo {
-    display: inline-block;
-    padding-bottom: 10px;
+  header{
+    padding-bottom:10px;
   }
-  #logo a{
-    color: #fff;
+  header ul {
+    padding-top:14px;
   }
-  /*header:after{
-    content: " ";
-    display: table;
-    clear: both;
+  #logo{
+    padding-left: 5px;
+    padding-top:15px;
   }
-  #search{
+
+  #search_form{
+    padding-top: 5px;
+    padding-right: 5px;
     display: inline-block;
     float: right;
-  }*/
+    width: 80%;
+  }
+
+  /***** =Login Page *****/
+  .login_register_titles{
+    padding-top: 160px;
+    padding-left: 270px;
+  }
+
+  #login_register_forms{
+    padding-left: 270px;
+  }
+  #login_register_forms input{
+    width: 60%;
+  }
+
+}
+
+
+@media (min-width:900px) and (max-width:1500px) {
+  #wrapper {
+    width: 900px;
+    margin: auto;
+  }
 
 
 }
