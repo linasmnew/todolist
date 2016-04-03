@@ -18,10 +18,15 @@ if(isset($_GET['search'])){
 }
 ?>
 
-<!-- display results in a table using a foreach loop -->
+
+<ul class="task_actions">
+  <li><a id="complete_task_link" href="javascript:;">Mark as completed</a></li>
+  <li><a id="remove_task_link" href="javascript:;">Delete task</a></li>
+</ul>
+
 <section>
   <?php if(is_string($result)){
-    echo '<p>Nothing matched the search criteria</p>';
+    echo '<p class="not_found">Nothing matched the search criteria</p>';
   }else{ ?>
   <table class="tasks_table">
     <th>Title</th>
@@ -41,10 +46,6 @@ if(isset($_GET['search'])){
   </table>
 </section>
 
-<ul class="task_actions">
-  <li><a id="complete_task_link" href="javascript:;">Mark as completed</a></li>
-  <li><a id="remove_task_link" href="javascript:;">Delete task</a></li>
-</ul>
 <p id="notice"></p>
 
 <script src="../js/ajax-requests.js"></script>

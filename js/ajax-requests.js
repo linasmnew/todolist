@@ -60,7 +60,7 @@ $('#complete_task_link').click(function(evt){
 
         if($.inArray(inputtt, checked) !== -1 ){
           //found
-          $(this).closest('tr').remove();
+          $(this).closest('div').remove();
         }
       });
       //reset id values
@@ -96,7 +96,7 @@ $('#remove_task_link').click(function(evt){
 
         if($.inArray(inputtt, checked) !== -1 ){
           //found
-          $(this).closest('tr').remove();
+          $(this).closest('div').remove();
         }
       });
       //reset id values

@@ -19,6 +19,14 @@
 <body>
   <div id="wrapper">
     <header>
+
+      <?php if(isset($_SESSION['user_id'])) : ?>
+      <div id="profile_link_container">
+        <a href="profile.php">Profile</a>
+        <a class="logout" href="logout.php">Logout</a>
+      </div>
+      <?php endif; ?>
+
       <div id="logo">
         <a href="index.php">TodoList Manager</a>
       </div>
@@ -28,10 +36,12 @@
           <li><a href="register.php">Register</a></li>
         </ul>
       <?php endif; ?>
+
       <?php if(isset($_SESSION['user_id'])) : ?>
       <form id="search_form" action="search.php" method="GET">
         <input type="text" name="search" placeholder="search...">
         <input type="submit" value="search">
       </form>
     <?php endif; ?>
+
     </header>

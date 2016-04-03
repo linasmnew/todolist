@@ -5,7 +5,7 @@ function getTasks($user_id, $category,$conn){
   //  date('Y-m-d',$task['time_due']);
   $category = $category;
 
-  $find_category_tasks = $conn->prepare("SELECT * FROM tasks WHERE category = ? AND user_id = ? ORDER BY date_due, time_due");
+  $find_category_tasks = $conn->prepare("SELECT * FROM tasks WHERE category = ? AND user_id = ? ORDER BY date_due");
   $find_category_tasks->bindParam(1,$category, PDO::PARAM_STR);
   $find_category_tasks->bindParam(2,$user_id, PDO::PARAM_STR);
   $find_category_tasks->execute();
@@ -17,6 +17,42 @@ function getTasks($user_id, $category,$conn){
   }else{
     return 'not fouund';
   }
+}
+
+
+function getCompletedTasks($user_id, $conn){
+
+  $find_completed_tasks = $conn->prepare("SELECT * FROM completed WHERE user_id = ? ORDER BY date_completed DESC");
+  $find_completed_tasks->bindParam(1,$user_id, PDO::PARAM_STR);
+  $find_completed_tasks->execute();
+  $result = $find_completed_tasks->fetchAll();
+  $find_completed_tasks->closeCursor();
+
+  if($find_completed_tasks->rowCount()>0){
+    return $result;
+  }else{
+    return 'not fouund';
+  }
+
+}
+
+function getOverdueTasks($user_id, $conn){
+  $currentDate = date('Y-m-d');
+  $currentTime = date('H:i:s');
+  $currentDateTimestamp = date('Y-m-d H:i:s', strtotime("$currentDate $currentTime"));
+
+  $find_overdue_tasks = $conn->prepare("SELECT * FROM tasks WHERE date_due < ? ORDER BY date_due");
+  $find_overdue_tasks->bindParam(1,$currentDateTimestamp, PDO::PARAM_STR);
+  $find_overdue_tasks->execute();
+  $result = $find_overdue_tasks->fetchAll();
+  $find_overdue_tasks->closeCursor();
+
+  if($find_overdue_tasks->rowCount()>0){
+    return $result;
+  }else{
+    return 'no notifications';
+  }
+
 }
 
 
@@ -67,7 +103,6 @@ function completeAndRemoveTasks($user_id, $url, $conn){
   }
 
 }
-
 
 
 function completelyDeleteTask($user_id, $url, $conn){

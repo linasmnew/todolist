@@ -19,21 +19,20 @@ if(isset($_GET['category']) && $_GET['category'] !== ''){
 
 <section>
   <?php if(is_string($category_tasks)){
-    echo '<p>No tasks added</p>';
+    echo '<p class="not_found">No tasks added</p>';
   }else{ ?>
-  <table class="tasks_table">
-    <th>Title</th>
-    <th>Date due</th>
-    <th>Time due</th>
-    <th>Select</th>
 
     <?php foreach($category_tasks as $task) : ?>
-      <tr>
-        <td class="title"><?php echo($task['title']); ?></td>
-        <td class="date_due"><?php echo($task['date_due']); ?></td>
-        <td class="time_due"><?php echo date('H:i', $task['time_due']); ?></td>
-        <td class="select"><input type="checkbox" name="selected_task" class="selected_task" value="<?php echo $task['id']; ?>"></td>
-      </tr>
+      <?php
+      //process date and time
+      $date = substr($task['date_due'],0, 10);
+      $time = substr($task['date_due'],11, 5);
+      ?>
+      <div class="tasks_div_view_page">
+        <p class="title"><?php echo($task['title']); ?> <input type="checkbox" name="selected_task" class="selected_task" value="<?php echo $task['id']; ?>"></p>
+        <p class="date_due"><?php echo $task['category']; ?> <span class="date"><?php echo $date;?> <span style="padding-left:5px"><?php echo $time; ?></span></span></p>
+      </div>
+
     <?php endforeach; ?>
     <?php  }  ?>
   </table>

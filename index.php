@@ -9,8 +9,10 @@ require('header.php');
 
 ?>
 
-    <section>
-      <h1>Todo List Manager</h1>
+    <section id="homepage">
+      <p>The best cloud solution <br><span style="padding-left:40px">for managing your tasks</span></p>
+
+      <img src="img/bg.png" width="900">
     </section>
 
 <?php require('footer.php'); ?>
