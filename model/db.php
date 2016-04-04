@@ -8,7 +8,7 @@ $db_options = array(
 
 $conn = new PDO('mysql:host=127.0.0.1;dbname=todo;charset=utf8', 'root', '', $db_options);
 
-function open($sess_path, $sess_name){
+function open($path, $name){
   GLOBAL $db_options;
   // echo '<p>session open fired</p>';
   $conn = new PDO('mysql:host=127.0.0.1;dbname=todo;charset=utf8', 'root', '', $db_options);
