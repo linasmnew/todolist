@@ -2,7 +2,6 @@
 require_once '../model/db.php';
 session_start();
 
-require('../model/db.php');
 require('taskFunctions.php');
 
   if(isset($_POST['removeUrl'])){

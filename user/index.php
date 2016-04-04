@@ -7,7 +7,6 @@ if(!isset($_SESSION['user_id'])){
   header('location: ../login.php');
 }
 
-require_once('../model/db.php');
 require('categoryFunctions.php');
 require('taskFunctions.php');
 $result = getCategories($_SESSION['user_id'],$conn);

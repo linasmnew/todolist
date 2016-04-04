@@ -6,7 +6,6 @@ session_start();
 if(!isset($_SESSION['user_id'])){
   header('location: ../login.php');
 }
-require_once('../model/db.php');
 require('taskFunctions.php');
 
 $completed_tasks_result = getCompletedTasks($_SESSION['user_id'], $conn);
