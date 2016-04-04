@@ -8,4 +8,4 @@ CREATE TABLE completed(id int auto_increment NOT NULL, task_title varchar(300) N
 
 CREATE TABLE category(id int auto_increment NOT NULL, name varchar(100) NOT NULL, user_id int NOT NULL, PRIMARY KEY(id))
 
-CREATE TABLE session (session_id CHAR(32) NOT NULL, session_data TEXT NOT NULL, session_lastaccesstime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (session_id))
+CREATE TABLE session (id CHAR(32) NOT NULL, data VARCHAR(1000) NOT NULL, lastaccessed TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (id))
