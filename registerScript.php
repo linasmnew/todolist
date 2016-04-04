@@ -8,7 +8,6 @@ if(isset($_POST['register'])){
   $password = $_POST['password'];
 
   if(!empty($username) && !empty($email) && !empty($password)){
-
     //encode special characters
     $username = filter_var($username, FILTER_SANITIZE_ENCODED);
     $password = filter_var($password, FILTER_SANITIZE_ENCODED);
@@ -22,7 +21,6 @@ if(isset($_POST['register'])){
             $check_username->bindParam(1,$username, PDO::PARAM_STR);
             $check_username->fetch();
             $check_username->execute();
-            $check_username->closeCursor();
 
             if($check_username->rowCount()==1){
                 $_SESSION['status'] = 'Username is already in use';
@@ -32,7 +30,6 @@ if(isset($_POST['register'])){
                 $check_email->bindParam(1,$email, PDO::PARAM_STR);
                 $check_email->fetch();
                 $check_email->execute();
-                $check_email->closeCursor();
 
                 if($check_email->rowCount()==1){
                     $_SESSION['status'] = 'Email is already in use';
@@ -45,7 +42,6 @@ if(isset($_POST['register'])){
                   $register->bindParam(2,$email, PDO::PARAM_STR);
                   $register->bindParam(3,$hashed_password, PDO::PARAM_STR);
                   $register->execute();
-                  $register->closeCursor();
 
                   $_SESSION['status'] = 'Registered';
                   header('location: register.php');

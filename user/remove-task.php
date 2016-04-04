@@ -1,4 +1,5 @@
 <?php
+require_once '../model/db.php';
 session_start();
 
 require('../model/db.php');

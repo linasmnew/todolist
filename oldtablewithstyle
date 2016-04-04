@@ -1,0 +1,71 @@
+<table class="tasks_table">
+  <th>Title</th>
+  <th>Date due</th>
+  <th class="time_th">Time due</th>
+  <th>Category</th>
+
+  <?php foreach($overDueTasksResult as $task) : ?>
+    <?php
+    //process date and time
+    $date = substr($task['date_due'],0, 10);
+    $time = substr($task['date_due'],11, 5);
+    ?>
+    <tr>
+      <td class="title"><?php echo($task['title']); ?></td>
+      <td class="date_due"><?php echo $date; ?></td>
+      <td class="time_due"><?php echo $time; ?></td>
+      <td class="time_due"><?php echo $task['category']; ?></td>
+    </tr>
+  <?php endforeach; ?>
+  <?php  }  ?>
+</table>
+
+
+
+
+
+
+
+
+/****** =Tasks table ******/
+.tasks_table {
+  width: 100%;
+}
+.tasks_table td{
+  vertical-align: top;
+  padding: 10px;
+}
+.tasks_table th{
+  text-align: left;
+  padding: 10px;
+}
+.tasks_table .time_th{
+  text-align: center;
+}
+.tasks_table .category_th{
+  text-align: center;
+}
+.title{
+  width: 55%;
+}
+.date_due{
+  width: 20%;
+}
+.time_due{
+  width: 20%;
+  text-align: center;
+}
+.select{
+  width: 5%;
+  text-align: center;
+}
+.title_completed{
+  width: 65%;
+}
+.date_completed{
+  width: 20%;
+}
+.category_td{
+  width: 15%;
+  text-align: center;
+}

@@ -1,10 +1,11 @@
 <?php
+require_once '../model/db.php';
+
 session_start();
 if(!isset($_SESSION['user_id'])){
   header('location: ../register.php');
 }
 require('../header.php');
-require('../model/db.php');
 require('taskFunctions.php');
 
 if(isset($_GET['category']) && $_GET['category'] !== ''){

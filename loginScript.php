@@ -1,5 +1,6 @@
 <?php
 require_once 'model/db.php';
+
 session_start();
 
 if(isset($_POST['login'])){
@@ -19,7 +20,6 @@ if(isset($_POST['login'])){
           $check_username->bindParam(1,$username, PDO::PARAM_STR);
           $check_username->execute();
           $result = $check_username->fetch(PDO::FETCH_ASSOC);
-          $check_username->closeCursor();
 
           if($check_username->rowCount()==1){
             if(password_verify($password,$result['password'])){

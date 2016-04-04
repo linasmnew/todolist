@@ -1,4 +1,6 @@
 <?php
+require_once 'model/db.php';
+
 session_start();
 
 if(isset($_SESSION['user_id'])){
@@ -6,7 +8,6 @@ if(isset($_SESSION['user_id'])){
 }
 
 require('header.php');
-
 ?>
 
 <section>

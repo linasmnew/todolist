@@ -10,7 +10,6 @@ function getTasks($user_id, $category,$conn){
   $find_category_tasks->bindParam(2,$user_id, PDO::PARAM_STR);
   $find_category_tasks->execute();
   $result = $find_category_tasks->fetchAll();
-  $find_category_tasks->closeCursor();
 
   if($find_category_tasks->rowCount()>0){
     return $result;
@@ -26,7 +25,6 @@ function getCompletedTasks($user_id, $conn){
   $find_completed_tasks->bindParam(1,$user_id, PDO::PARAM_STR);
   $find_completed_tasks->execute();
   $result = $find_completed_tasks->fetchAll();
-  $find_completed_tasks->closeCursor();
 
   if($find_completed_tasks->rowCount()>0){
     return $result;
@@ -45,7 +43,6 @@ function getOverdueTasks($user_id, $conn){
   $find_overdue_tasks->bindParam(1,$currentDateTimestamp, PDO::PARAM_STR);
   $find_overdue_tasks->execute();
   $result = $find_overdue_tasks->fetchAll();
-  $find_overdue_tasks->closeCursor();
 
   if($find_overdue_tasks->rowCount()>0){
     return $result;

@@ -7,3 +7,5 @@ CREATE TABLE tasks(id int auto_increment NOT NULL, title varchar(300) NOT NULL, 
 CREATE TABLE completed(id int auto_increment NOT NULL, task_title varchar(300) NOT NULL,  user_id int NOT NULL, date_completed timestamp, category varchar(100), PRIMARY KEY(id))
 
 CREATE TABLE category(id int auto_increment NOT NULL, name varchar(100) NOT NULL, user_id int NOT NULL, PRIMARY KEY(id))
+
+CREATE TABLE sessions(id int auto_increment NOT NULL , SessionID char(26), Data TEXT, DateTouced INT, PRIMARY KEY(id))

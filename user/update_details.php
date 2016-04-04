@@ -1,9 +1,9 @@
 <?php
+require_once '../model/db.php';
 session_start();
 if(!isset($_SESSION['user_id'])){
   header('location: ../login.php');
 }
-require_once '../model/db.php';
 
 
 if(isset($_POST['update_email'])){
@@ -18,7 +18,6 @@ if(isset($_POST['update_email'])){
           $update->bindParam(1,$email, PDO::PARAM_STR);
           $update->bindParam(2,$_SESSION['user_id'], PDO::PARAM_STR);
           $update->execute();
-          $update->closeCursor();
 
           $_SESSION['status'] = 'Email updated';
           header('location: profile.php');
@@ -56,7 +55,6 @@ if(isset($_POST['update_password'])){
         $check_old_password->bindParam(1,$_SESSION['user_id'], PDO::PARAM_STR);
         $check_old_password->execute();
         $result = $check_old_password->fetch(PDO::FETCH_ASSOC);
-        $check_old_password->closeCursor();
 
           if($check_old_password->rowCount()==1){
             if(password_verify($oldPassword,$result['password'])){
@@ -66,7 +64,6 @@ if(isset($_POST['update_password'])){
               $updatePassword->bindParam(1,$hashed_password, PDO::PARAM_STR);
               $updatePassword->bindParam(2,$_SESSION['user_id'], PDO::PARAM_STR);
               $updatePassword->execute();
-              $updatePassword->closeCursor();
 
               $_SESSION['status'] = 'Password updated';
               header('location: profile.php');

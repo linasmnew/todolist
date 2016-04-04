@@ -8,7 +8,6 @@ function getTasksBySearch($user_id, $keyword, $conn){
   $find_tasks_by_search->bindParam(2,$user_id, PDO::PARAM_STR);
   $find_tasks_by_search->execute();
   $result = $find_tasks_by_search->fetchAll();
-  $find_tasks_by_search->closeCursor();
 
   if($find_tasks_by_search->rowCount()>0){
     return $result;

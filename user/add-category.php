@@ -1,4 +1,6 @@
 <?php
+require_once '../model/db.php';
+
 session_start();
 if(!isset($_SESSION['user_id'])){
   header('location: ../register.php');
@@ -25,7 +27,6 @@ require('../header.php');
 
 <?php
 if(isset($_POST['add_category'])){
-  require_once('../model/db.php');
   //capture input into variables here
   $category = $_POST['category_name'];
 
@@ -34,7 +35,6 @@ if(isset($_POST['add_category'])){
   $add_category->bindParam(1, $category, PDO::PARAM_STR);
   $add_category->bindParam(2, $_SESSION['user_id'], PDO::PARAM_STR);
   $add_category->execute();
-  $add_category->closeCursor();
 
   header('location: add-category.php');
 
